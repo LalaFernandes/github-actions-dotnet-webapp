@@ -1,0 +1,24 @@
+name: Run on Push and Every Hour
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *'  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Rodar script personalizado
+        run: |
+          echo "Iniciando script personalizado..."
+          echo "Data e hora atuais:"
+          date
+          echo "Listando arquivos do diretório:"
+          ls -la
